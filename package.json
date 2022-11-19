@@ -73,9 +73,9 @@
         "default": "System"
       },
       "disqus_shortname": {
-          "type": "text",
-          "default": "",
-          "group": "post"
+        "type": "text",
+        "default": "",
+        "group": "post"
       },
       "darkmode_accent_color": {
         "type": "color",
