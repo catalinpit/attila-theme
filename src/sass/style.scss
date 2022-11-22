@@ -966,7 +966,7 @@ textarea {
 	color: var(--color-content-lead);
 
 	@media only screen and (max-width: $breakpoint-medium) {
-		font-size: 4em;
+		font-size: 5em;
 	}
 }
 
@@ -1687,6 +1687,10 @@ textarea {
 .post-header {
 	position: relative;
 	padding: calc(16rem + 4vw) 0 calc(2rem + 2vw);
+
+	@media only screen and (max-width: $breakpoint-medium) {
+		padding: calc(10rem + 4vw) 0 calc(2rem + 2vw);
+	}
 }
 
 .post-header.has-cover {
@@ -1807,6 +1811,10 @@ textarea {
 	margin: 0 0 4rem;
 	font-size: 6em;
 	line-height: 1.25em;
+
+	@media (max-width: $breakpoint-medium) {
+		font-size: 4em;
+	}
 }
 
 .has-cover .post-title {
