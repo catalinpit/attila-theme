@@ -964,6 +964,10 @@ textarea {
 	line-height: 1em;
 	text-decoration: none;
 	color: var(--color-content-lead);
+
+	@media only screen and (max-width: $breakpoint-medium) {
+		font-size: 4em;
+	}
 }
 
 .has-cover .blog-name {
@@ -978,6 +982,10 @@ textarea {
 	font-size: 3em;
 	line-height: 1.33334em;
 	color: var(--color-content-secondary);
+
+	@media only screen and (max-width: $breakpoint-medium) {
+		font-size: 2em;
+	}
 }
 
 .has-cover .blog-description {
@@ -1782,9 +1790,10 @@ textarea {
 	text-indent: -1px;
 	color: var(--color-content-lead);
 
-	@media only screen and (max-width: $breakpoint-small) {
+	@media only screen and (max-width: $breakpoint-medium) {
 		-webkit-hyphens: auto;
 		hyphens: auto;
+		font-size: 3.5em;
 	}
 
 	a {
