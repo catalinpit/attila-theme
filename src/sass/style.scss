@@ -918,6 +918,10 @@ textarea {
 		border: none;
 		padding-bottom: calc(8rem + 4vw);
 	}
+
+	@media only screen and (max-width: $breakpoint-medium) {
+		padding-top: calc(10rem + 4vw);
+	}
 }
 
 .blog-cover {
