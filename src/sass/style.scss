@@ -1214,6 +1214,7 @@ textarea {
     justify-content: space-between;
   }
 
+  .nav-search,
   a {
     position: relative;
     display: block;
@@ -1229,9 +1230,12 @@ textarea {
       width: 4rem;
     }
 
-    &.nav-search {
-      width: auto;
+    &:is(button) {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
       text-align: right;
+      width: auto;
     }
 
     &:focus,
@@ -1419,6 +1423,25 @@ textarea {
 
     span {
       display: none;
+    }
+  }
+
+  li.nav-search {
+    button {
+      background-color: transparent;
+      box-shadow: none;
+      border: none;
+      color: var(--color-content-secondary);
+      cursor: pointer;
+      font-size: 1.75em;
+      line-height: 2rem;
+      padding: 1rem 0;
+      transition: color linear 0.1s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-content-main);
+      }
     }
   }
 }
