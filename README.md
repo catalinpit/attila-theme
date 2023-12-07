@@ -83,6 +83,11 @@ Install Grunt dependencies:
 ````bash
 npm install
 ````
+Note: If your install gets stuck, try this method:
+````bash
+npm install -g npm@6
+````
+
 Build Grunt project:
 ````bash
 grunt build
