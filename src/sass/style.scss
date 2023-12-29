@@ -2402,3 +2402,8 @@ textarea {
     border-bottom: 1px solid var(--color-background-contrast);
   }
 }
+
+.no-header-and-title {
+  margin: 0 auto;
+  padding: calc(16rem + 4vw) 0 calc(2rem + 2vw);
+}
