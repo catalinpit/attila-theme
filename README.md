@@ -1,60 +1,34 @@
-# Attila
+## Install Ghost
 
-A content focused responsive theme for [Ghost](https://github.com/tryghost/ghost/). See a demo at: [attila.peteramende.de](https://attila.peteramende.de/)
+You need to install Ghost locally in order to test your changes. You can install Ghost by following the steps below.
 
-## ♥️ Support
+1. Install Ghost-CLI
 
-You can [buy me a drink](https://paypal.me/zutrinken) if you enjoy using Attila. Cheers 🍻
+```
+npm install ghost-cli@latest -g
+```
 
-## 📷 Screenshot
+2. Install Ghost
 
-<img src="https://raw.githubusercontent.com/zutrinken/attila/master/src/screenshot.png" />
+Create an empty directory and run:
 
-## ⭐️ Features
+```
+ghost install local
+```
 
-* Theme options
-* Responsive layout
-* Light and Dark Mode
-* Search support
-* Post reading progress
-* Code highlight including line numbers
-* Comments and Disqus (Theme option)
-* Ghost accent color
+3. Run Ghost
 
-## 🌍 Localization
+Start Ghost if it's not already running:
 
-🟩 Up to date  🟧 Missing strings
+```
+ghost start
+```
 
-| Code | Flag | Language | Status | Translator |
-| :--: | :--: | :------: | :----: | :--------: |
-| `en` | 🇬🇧 | English | 🟩 | |
-| `de` | 🇩🇪 | German | 🟩 | |
-| `es` | 🇪🇸 | Spanish | 🟩 | [r1p](https://github.com/r1p) |
-| `fr` | 🇫🇷 | French | 🟩 | [robink](https://github.com/robink), [alsyia](https://github.com/alsyia) |
-| `it` | 🇮🇹 | Italian | 🟩 | [fmaida](https://github.com/fmaida), [undrivendev](https://github.com/undrivendev) |
-| `no` | 🇳🇴 | Norwegian | 🟧 | [arthurnoerve](https://github.com/arthurnoerve), [oisann](https://github.com/oisann), [Givemeurcookies](https://github.com/givemeurcookies) |
-| `zh` | 🇨🇳 | Chinese | 🟩 | [hao-lee](https://github.com/hao-lee), [izumiko](https://github.com/izumiko), [emperorjoker](https://github.com/emperorjoker) |
-| `zh_tw` | 🇨🇳 | Chinese Traditional | 🟩 | [Petingo](https://github.com/Petingo)
-| `id` | 🇮🇩 | Indonesian | 🟧 | [simplyeazy](https://github.com/simplyeazy) |
-| `ro` | 🇷🇴 | Romanian | 🟧 | [cdorin93](https://github.com/cdorin93) |
-| `ru` | 🇷🇺 | Russian | 🟩 | [schamberg97](https://github.com/schamberg97), [atjanov](https://github.com/atjanov) |
-| `tr` | 🇹🇷 | Turkish | 🟩 | [cgrgrbz](https://github.com/cgrgrbz), [electricalgorithm](https://github.com/electricalgorithm) |
-| `sv` | 🇸🇪 | Swedish | 🟩 | [martenj77](https://github.com/martenj77), [LarssonOliver](https://github.com/LarssonOliver) |
-| `cs` | 🇨🇿 | Czech | 🟩 | [lunakv](https://github.com/lunakv), [rdolezel](https://github.com/rdolezel) |
-| `pt` | 🇵🇹 | Portuguese | 🟧 | [matheusvanzan](https://github.com/matheusvanzan) |
-| `vi` | 🇻🇳 | Vietnamese | 🟩 | [JustHmmmm](https://github.com/justhmmmm), [mastoduy](https://github.com/mastoduy) |
-| `el` | 🇬🇷 | Greek | 🟧 | [thiodordelis](https://github.com/thiodordelis) |
-| `dk` | 🇩🇰 | Danish | 🟩 | [jmayntzhusen](https://github.com/jmayntzhusen), [tmlmt](https://github.com/tmlmt) |
-| `ar` | | Arabic | 🟧 | [pop-eax](https://github.com/pop-eax) |
-| `ca` | | Catalan | 🟧 | [arthurnoerve](https://github.com/arthurnoerve) |
-| `lt` | 🇱🇹 | Lithuanian | 🟧 | [arthurnoerve](https://github.com/arthurnoerve) |
-| `nl` | 🇳🇱 | Dutch | 🟧 | [gkdp](https://github.com/gkdp) |
-| `pl` | 🇵🇱 | Polish | 🟩 | [filipolszewski](https://github.com/filipolszewski), [MrBoombastic](https://github.com/mrboombastic) |
-| `eo` | | Esperanto | 🟧 | [ebanDev](https://github.com/ebanDev) |
-| `ga` | | Galego | 🟩 | [r1p](https://github.com/r1p) |
-| `uk` | 🇺🇦 | Ukrainian | 🟩 | [Rakanskiy](https://github.com/rakanskiy), [krupenik](https://github.com/krupenik), [vadimkin](https://github.com/vadimkin) |
-| `ja` | 🇯🇵 | Japanese | 🟩 | [emperorjoker](https://github.com/emperorjoker) |
-| `fa` | | Farsi | 🟩 | [ItsAminZamani](https://github.com/ItsAminZamani) |
+4. Access your blog
+
+Access the blog at `http://localhost:2368` and the admin interface at `http://localhost:2368/ghost`.
+
+> For more information about installing Ghost, check out their [documentation here](https://ghost.org/docs/install/local/).
 
 ## 🔠 Setup custom google fonts
 
@@ -96,6 +70,11 @@ The compress Grunt task packages the theme files into `dist/<theme-name>.zip`, w
 ````bash
 grunt compress
 ````
+
+## 💻 Testing
+
+Before opening a PR, validate the theme and make sure it works properly. You can validate the theme at https://gscan.ghost.org/. Upload a zip to check for errors, deprecations and other compatibility issues.
+
 ## ⚖️ Copyright & License
 
 Copyright (C) 2015-2022 Peter Amende - Released under the [MIT License](https://github.com/zutrinken/attila/blob/master/LICENSE).
