@@ -2194,23 +2194,23 @@ textarea {
 }
 
 .post-nav-next {
-  float: left;
-
-  .post-nav-teaser {
-    padding-right: 3rem;
-    @media only screen and (max-width: $breakpoint-medium) {
-      padding-right: 0;
-    }
-  }
-}
-
-.post-nav-prev {
   float: right;
 
   .post-nav-teaser {
     padding-left: 3rem;
     @media only screen and (max-width: $breakpoint-medium) {
       padding-left: 0;
+    }
+  }
+}
+
+.post-nav-prev {
+  float: left;
+
+  .post-nav-teaser {
+    padding-right: 3rem;
+    @media only screen and (max-width: $breakpoint-medium) {
+      padding-right: 0;
     }
   }
 }
@@ -2256,13 +2256,13 @@ textarea {
 }
 
 .post-nav-next i {
-  left: 0;
-  margin-left: -4rem;
+  right: 0;
+  margin-right: -4rem;
 }
 
 .post-nav-prev i {
-  right: 0;
-  margin-right: -4rem;
+  left: 0;
+  margin-left: -4rem;
 }
 
 .post-nav-title {
