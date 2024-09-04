@@ -1159,13 +1159,31 @@ textarea {
 /* ==========================================================================
    Navigation
    ========================================================================== */
+#announcement-bar-root {
+  position: sticky;
+  width: 100%;
+  background-color: var(--ghost-accent-color);
+  color: white;
+  text-align: center;
+  z-index: 401;
+  font-size: 1.4em;
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    position: fixed;
+  }
+}
+
+.gh-announcement-bar {
+  position: sticky;
+}
+
 .nav-header {
   position: absolute;
-  top: 0;
   left: 0;
   width: 100%;
   z-index: 400;
   transition: all ease-out 0.3s;
+
   @media only screen and (max-width: $breakpoint-medium) {
     transform: translate3d(0, -100%, 0);
   }

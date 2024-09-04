@@ -113,3 +113,25 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const announcementBar = document.querySelector('#announcement-bar-root');
+  const navHeader = document.querySelector('.nav-header');
+
+  function adjustNavHeaderPosition() {
+    if (announcementBar) {
+      const announcementBarHeight = announcementBar.offsetHeight;
+      navHeader.style.top = `5rem`;
+    } else {
+      navHeader.style.top = '0';
+    }
+  }
+
+  console.log('announcementBar', announcementBar);
+
+  adjustNavHeaderPosition();
+
+  window.addEventListener('resize', adjustNavHeaderPosition);
+});
+</script>
