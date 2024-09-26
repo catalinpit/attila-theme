@@ -1283,7 +1283,6 @@ textarea {
     }
   }
 }
-
 .nav-header .nav-wrapper {
   display: flex;
   max-height: calc(100vh - 6rem);
@@ -1705,9 +1704,10 @@ textarea {
   position: relative;
 
   .post .post-box {
-    padding-top: calc(4rem + 2vw);
-    padding-bottom: calc(4rem + 2vw);
-    border-bottom: 1px solid var(--color-background-contrast);
+    padding-top: calc(2rem + 2vw);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   #results .post:first-child .post-box {
@@ -1843,23 +1843,45 @@ textarea {
 .post-title {
   position: relative;
   z-index: 10;
-  margin: 0 0 2rem;
-  font-size: 4em;
+  margin: 0;
+  font-size: 2.5em;
   line-height: 1.25em;
   font-weight: 700;
   text-indent: -1px;
   color: var(--color-content-lead);
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  flex: 1;
+  min-width: 0; // Add this to allow flex item to shrink below its content size
 
   @media only screen and (max-width: $breakpoint-medium) {
     -webkit-hyphens: auto;
     hyphens: auto;
-    font-size: 3.5em;
+    font-size: 2.5em;
   }
 
   a {
     text-decoration: none;
     color: inherit;
     font-weight: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-shrink: 1; // Change this to allow shrinking
+    min-width: 0; // Add this to allow flex item to shrink below its content size
+  }
+
+  &::after {
+    content: "";
+    flex-grow: 1;
+    flex-shrink: 1; // Allow the line to shrink
+    height: 1px;
+    background-color: var(--color-background-contrast);
+    margin-right: 2px;
+    margin-left: 0.5em;
+    min-width: 1em; // Reduce this to allow more space for the title
   }
 }
 
@@ -1882,6 +1904,11 @@ textarea {
   font-size: 1.6em;
   line-height: 2rem;
   color: var(--color-content-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+  margin-left: 1rem;
 
   a {
     display: inline-block;
