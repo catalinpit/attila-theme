@@ -46,7 +46,7 @@
     "node-sass": "^7.0.3"
   },
   "config": {
-    "posts_per_page": 8,
+    "posts_per_page": 15,
     "image_sizes": {
       "s": {
         "width": 320

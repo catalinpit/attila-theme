@@ -126,3 +126,13 @@
     /* Safari, Android, iOS */
       url("../font/fira-sans-v8-latin-700.svg#FiraSans") format("svg"); /* Legacy iOS */
 }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../font/Inter-Regular.woff2") format("woff2"),
+    url("../font/Inter-Regular.woff") format("woff"),
+    url("../font/Inter-Regular.ttf") format("truetype");
+}

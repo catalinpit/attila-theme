@@ -14,7 +14,7 @@ $inner: calc(64rem + 8vw);
    Basics
    ========================================================================== */
 :root {
-  --font-primary: "Fira Sans", sans-serif;
+  --font-primary: "Inter", sans-serif;
   --font-secondary: "Libre Baskerville", serif;
 }
 
@@ -111,13 +111,13 @@ textarea {
   }
 
   p {
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     margin: 0 0 3rem;
   }
 
   ol,
   ul {
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     margin: 0 0 4rem;
     padding-left: 2em;
     box-sizing: border-box;
@@ -177,7 +177,7 @@ textarea {
   }
 
   blockquote {
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     margin: 0 0 4rem;
     padding: 0.25em 1em;
     -moz-box-sizing: border-box;
@@ -217,7 +217,7 @@ textarea {
   }
 
   dl {
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     margin: 0 0 4rem;
     padding-left: 30px;
   }
@@ -906,7 +906,7 @@ textarea {
     z-index: 10;
     padding-bottom: calc(4rem + 2vw);
     text-align: center;
-    border-bottom: 1px solid var(--color-background-contrast);
+    // border-bottom: 1px solid var(--color-background-contrast);
   }
 
   &.has-cover .blog-box {
@@ -982,7 +982,7 @@ textarea {
 }
 
 .blog-description {
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   display: block;
   margin-top: 1rem;
   padding: 0;
@@ -1047,7 +1047,7 @@ textarea {
     font-size: 2em;
     line-height: 1.5em;
     margin: 1rem 0;
-    font-family: var(--font-secondary);
+    font-family: var(--font-primary);
     color: var(--color-content-secondary);
   }
 
@@ -1704,7 +1704,7 @@ textarea {
   position: relative;
 
   .post .post-box {
-    padding-top: calc(2rem + 2vw);
+    padding-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1844,9 +1844,9 @@ textarea {
   position: relative;
   z-index: 10;
   margin: 0;
-  font-size: 2.5em;
+  font-size: 2.1em;
   line-height: 1.25em;
-  font-weight: 700;
+  font-weight: 100;
   text-indent: -1px;
   color: var(--color-content-lead);
   display: flex;
@@ -1854,12 +1854,12 @@ textarea {
   padding-bottom: 0.5rem;
   width: 100%;
   flex: 1;
-  min-width: 0; // Add this to allow flex item to shrink below its content size
+  min-width: 0;
 
   @media only screen and (max-width: $breakpoint-medium) {
     -webkit-hyphens: auto;
     hyphens: auto;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   a {
@@ -1869,19 +1869,25 @@ textarea {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    flex-shrink: 1; // Change this to allow shrinking
-    min-width: 0; // Add this to allow flex item to shrink below its content size
+    flex-shrink: 1;
+    min-width: 0;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--color-content-main);
+      border-bottom: 2px solid var(--ghost-accent-color);
+    }
   }
 
   &::after {
     content: "";
     flex-grow: 1;
-    flex-shrink: 1; // Allow the line to shrink
+    flex-shrink: 1;
     height: 1px;
     background-color: var(--color-background-contrast);
     margin-right: 2px;
     margin-left: 0.5em;
-    min-width: 1em; // Reduce this to allow more space for the title
+    min-width: 1em;
   }
 }
 
@@ -1998,7 +2004,7 @@ textarea {
 
 .post-excerpt {
   margin: 1em 0 0;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 1.75em;
   line-height: 2em;
 }
@@ -2327,7 +2333,7 @@ textarea {
 .post-nav-excerpt {
   height: 5rem;
   margin: 0 0 1rem;
-  font-family: var(--font-secondary);
+  font-family: var(--font-primary);
   font-size: 1.5em;
   line-height: 2.5rem;
   display: -webkit-box;
