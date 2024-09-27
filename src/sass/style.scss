@@ -905,7 +905,6 @@ textarea {
     position: relative;
     z-index: 10;
     padding-bottom: calc(4rem + 2vw);
-    text-align: center;
     // border-bottom: 1px solid var(--color-background-contrast);
   }
 
@@ -981,17 +980,18 @@ textarea {
   color: white;
 }
 
-.blog-description {
+.blog-description,
+.author-cta {
   font-family: var(--font-primary);
   display: block;
   margin-top: 1rem;
   padding: 0;
-  font-size: 3em;
-  line-height: 1.33334em;
+  font-size: 2em;
+  line-height: 1.5em;
   color: var(--color-content-secondary);
 
   @media only screen and (max-width: $breakpoint-medium) {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 
@@ -2151,8 +2151,45 @@ textarea {
 }
 
 .subscribe-newsletter {
-  border: 1px solid var(--color-background-contrast);
   margin: 2rem 0 2rem 0;
+  border-radius: 0.5rem;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 3em;
+  align-items: center;
+}
+
+.subscribe-input {
+  background-color: var(--color-background-contrast);
+  border: 0;
+  border-radius: 4px;
+  color: var(--primary-text-color);
+  flex: 1 0 0;
+  font-family: var(--font-base);
+  font-size: 1.6rem;
+  outline: none;
+  padding: 0 1.5rem;
+  line-height: 4rem;
+}
+
+.subscribe-button {
+  color: #f8fbff;
+  background-color: var(--ghost-accent-color);
+  border-radius: 4px;
+  font-weight: 700;
+  padding: 0.7em 2em;
+  border: none;
+  font-size: 1.5em;
+
+  &:hover {
+    background-color: color-mix(
+      in srgb,
+      var(--ghost-accent-color) 80%,
+      transparent
+    );
+  }
 }
 
 /* ==========================================================================
