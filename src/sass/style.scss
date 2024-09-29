@@ -1708,6 +1708,11 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media only screen and (max-width: $breakpoint-medium) {
+      flex-direction: column;
+      align-items: baseline;
+    }
   }
 
   #results .post:first-child .post-box {
@@ -1844,7 +1849,7 @@ textarea {
   position: relative;
   z-index: 10;
   margin: 0;
-  font-size: 2.1em;
+  font-size: 2em;
   line-height: 1.25em;
   font-weight: 700;
   text-indent: -1px;
@@ -1859,7 +1864,7 @@ textarea {
   @media only screen and (max-width: $breakpoint-medium) {
     -webkit-hyphens: auto;
     hyphens: auto;
-    font-size: 2em;
+    font-size: 1.75em;
   }
 
   a {
@@ -1930,6 +1935,15 @@ textarea {
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  // @media only screen and (max-width: $breakpoint-medium) {
+  //   flex-direction: column;
+  //   align-items: baseline;
+  // }
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    font-size: 1.4em;
   }
 }
 
