@@ -66,9 +66,6 @@
       "author_bio_cta": {
         "type": "text"
       },
-      "author_profile_image": {
-        "type": "image"
-      },
       "color_scheme": {
         "type": "select",
         "options": [
