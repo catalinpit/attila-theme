@@ -1876,6 +1876,8 @@ textarea {
     text-overflow: ellipsis;
     flex-shrink: 1;
     min-width: 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s ease;
 
     &:hover {
       text-decoration: none;
@@ -1944,6 +1946,7 @@ textarea {
 
   @media only screen and (max-width: $breakpoint-medium) {
     font-size: 1.4em;
+    margin-left: 0;
   }
 }
 
