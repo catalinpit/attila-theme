@@ -990,9 +990,9 @@ textarea {
   line-height: 1.5em;
   color: var(--color-content-secondary);
 
-  @media only screen and (max-width: $breakpoint-medium) {
-    font-size: 1.5em;
-  }
+  // @media only screen and (max-width: $breakpoint-medium) {
+  //   font-size: 1.5em;
+  // }
 }
 
 .has-cover .blog-description {
@@ -1846,7 +1846,7 @@ textarea {
   margin: 0;
   font-size: 2.1em;
   line-height: 1.25em;
-  font-weight: 300;
+  font-weight: 700;
   text-indent: -1px;
   color: var(--color-content-lead);
   display: flex;
@@ -1878,6 +1878,11 @@ textarea {
       border-bottom: 2px solid var(--ghost-accent-color);
     }
   }
+}
+
+.post-title-homepage {
+  @extend .post-title;
+  font-weight: 400;
 
   &::after {
     content: "";
@@ -2156,8 +2161,13 @@ textarea {
 
 .subscribe-form {
   display: flex;
-  gap: 3em;
+  gap: 1rem;
   align-items: center;
+
+  @media (max-width: $breakpoint-medium) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
 
 .subscribe-input {
@@ -2165,12 +2175,19 @@ textarea {
   border: 0;
   border-radius: 4px;
   color: var(--primary-text-color);
-  flex: 1 0 0;
+  flex: 1;
   font-family: var(--font-base);
   font-size: 1.6rem;
   outline: none;
   padding: 0 1.5rem;
   line-height: 4rem;
+  min-width: 200px;
+  box-sizing: border-box;
+
+  @media (max-width: $breakpoint-medium) {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 .subscribe-button {
@@ -2181,6 +2198,12 @@ textarea {
   padding: 0.7em 2em;
   border: none;
   font-size: 1.5em;
+  white-space: nowrap;
+
+  @media (max-width: $breakpoint-medium) {
+    width: 100%;
+    margin-top: 1rem;
+  }
 
   &:hover {
     background-color: color-mix(
