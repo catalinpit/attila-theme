@@ -988,7 +988,8 @@ textarea {
   padding: 0;
   font-size: 2em;
   line-height: 1.5em;
-  color: var(--color-content-secondary);
+  color: var(--color-content-main);
+  font-weight: 300;
 
   // @media only screen and (max-width: $breakpoint-medium) {
   //   font-size: 1.5em;
@@ -1927,6 +1928,7 @@ textarea {
   text-overflow: ellipsis;
   flex-shrink: 0;
   margin-left: 1rem;
+  text-transform: uppercase;
 
   a {
     display: inline-block;
