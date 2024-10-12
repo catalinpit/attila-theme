@@ -14,8 +14,10 @@ $inner: calc(64rem + 8vw);
    Basics
    ========================================================================== */
 :root {
-  --font-primary: "Inter", sans-serif;
-  --font-secondary: "Libre Baskerville", serif;
+  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --font-secondary: "Libre Baskerville", Georgia, serif;
 }
 
 html {
@@ -118,7 +120,7 @@ textarea {
   ol,
   ul {
     font-family: var(--font-primary);
-    margin: 0 0 4rem;
+    margin: 0 0 0.5rem;
     padding-left: 2em;
     box-sizing: border-box;
   }
@@ -1705,7 +1707,7 @@ textarea {
   position: relative;
 
   .post .post-box {
-    padding-top: 2rem;
+    padding-top: 1.7rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1714,6 +1716,13 @@ textarea {
       flex-direction: column;
       align-items: baseline;
     }
+  }
+
+  .latest-posts-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--ghost-accent-color);
+    text-transform: uppercase;
   }
 
   #results .post:first-child .post-box {
