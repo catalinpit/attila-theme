@@ -906,7 +906,7 @@ textarea {
   .blog-box {
     position: relative;
     z-index: 10;
-    padding-bottom: calc(4rem + 2vw);
+    padding-bottom: 4rem;
     // border-bottom: 1px solid var(--color-background-contrast);
   }
 
@@ -1007,7 +1007,7 @@ textarea {
   z-index: 10;
 
   &.archive-box {
-    padding-bottom: calc(4rem + 2vw);
+    padding-bottom: 4rem;
     border-bottom: 1px solid var(--color-background-contrast);
   }
 
@@ -1723,6 +1723,7 @@ textarea {
     font-weight: 600;
     color: var(--ghost-accent-color);
     text-transform: uppercase;
+    padding-top: 1rem;
   }
 
   #results .post:first-child .post-box {
@@ -1936,7 +1937,6 @@ textarea {
   overflow: hidden;
   text-overflow: ellipsis;
   flex-shrink: 0;
-  margin-left: 1rem;
   text-transform: uppercase;
 
   a {
