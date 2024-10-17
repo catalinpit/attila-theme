@@ -1,23 +1,27 @@
-<section class="projects-section">
-  <h3 class="latest-posts-heading">Projects</h3>
-  <div class="projects-grid">
-    {{#get "pages" filter="tag:project" limit="all"}}
-      {{#foreach pages}}
-        <div class="project-card">
-          <h3 class="project-title">{{title}}</h3>
-          {{#if feature_image}}
-            <img
-              src="{{img_url feature_image size="m"}}"
-              alt="{{title}}"
-              class="project-image"
-            />
-          {{/if}}
-          <p class="post-meta">{{excerpt words="30"}}</p>
-          <a href="{{canonical_url}}" class="project-link">Learn More</a>
-        </div>
-      {{else}}
-        <p>No projects found.</p>
-      {{/foreach}}
-    {{/get}}
-  </div>
-</section>
+{{#get "pages" filter="tag:project" limit="1"}}
+  {{#if pages.length}}
+    <section class="projects-section">
+      <h3 class="latest-posts-heading">Projects</h3>
+      <div class="projects-grid">
+        {{#get "pages" filter="tag:project" limit="all"}}
+          {{#foreach pages}}
+            <div class="project-card">
+              <h3 class="project-title">{{title}}</h3>
+              {{#if feature_image}}
+                <img
+                  src="{{img_url feature_image size="m"}}"
+                  alt="{{title}}"
+                  class="project-image"
+                />
+              {{/if}}
+              <p class="post-meta">{{excerpt words="30"}}</p>
+              <a href="{{canonical_url}}" class="project-link">Learn More</a>
+            </div>
+          {{else}}
+            <p>No projects found.</p>
+          {{/foreach}}
+        {{/get}}
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
