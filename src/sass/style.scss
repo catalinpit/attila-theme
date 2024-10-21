@@ -2574,7 +2574,7 @@ textarea {
     opacity: 1;
 
     &:hover {
-      opacity: 0.9;
+      opacity: 0.8;
 
       .project-title,
       .project-icon,
@@ -2585,7 +2585,7 @@ textarea {
   }
 
   .project-excerpt {
-    font-size: 1.35em;
+    font-size: 1.5em;
     line-height: 1.75em;
     color: var(--color-content-secondary-project);
   }
@@ -2598,8 +2598,12 @@ textarea {
   }
 
   .project-title {
-    font-size: 1.5em;
+    font-size: 1.75em;
     line-height: 1em;
     font-weight: 500;
+  }
+
+  .project-link {
+    font-size: 1.2em;
   }
 }
