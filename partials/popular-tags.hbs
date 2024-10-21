@@ -1,0 +1,11 @@
+{{#get "tags" limit="all" include="count.posts"}}
+  <div class="tag-cloud">
+    <h2>Tag Cloud</h2>
+    {{#foreach tags}}
+      <a href="{{url}}" class="tag-cloud-item" data-count="{{count.posts}}">
+        {{name}}
+        <span class="tag-count">({{count.posts}})</span>
+      </a>
+    {{/foreach}}
+  </div>
+{{/get}}
