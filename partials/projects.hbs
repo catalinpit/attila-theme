@@ -5,18 +5,38 @@
       <div class="projects-grid">
         {{#get "pages" filter="tag:project" limit="all"}}
           {{#foreach pages}}
-            <div class="project-card">
-              <h3 class="project-title">{{title}}</h3>
-              {{#if feature_image}}
-                <img
-                  src="{{img_url feature_image size="m"}}"
-                  alt="{{title}}"
-                  class="project-image"
-                />
-              {{/if}}
-              <p class="post-meta">{{excerpt words="30"}}</p>
-              <a href="{{canonical_url}}" class="project-link">Learn More</a>
-            </div>
+            <a href="{{canonical_url}}" class="project-card-link">
+              <div class="project-card">
+                <div class="project-heading">
+                  <h3 class="project-title">{{title}}</h3>
+                  <svg
+                    class="project-icon"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6 18L18 6M18 6H10M18 6V14"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                {{#if feature_image}}
+                  <img
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{title}}"
+                    class="project-image"
+                  />
+                {{/if}}
+                <p class="project-excerpt">{{excerpt words="30"}}</p>
+                <span class="project-link">{{readable_url canonical_url}}</span>
+              </div>
+            </a>
           {{else}}
             <p>No projects found.</p>
           {{/foreach}}
