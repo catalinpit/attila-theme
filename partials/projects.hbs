@@ -1,7 +1,7 @@
 {{#get "pages" filter="tag:project" limit="1"}}
   {{#if pages.length}}
     <section class="projects-section">
-      <h3 class="latest-posts-heading">Projects</h3>
+      <h2 class="latest-posts-heading">Projects</h2>
       <div class="projects-grid">
         {{#get "pages" filter="tag:project" limit="all"}}
           {{#foreach pages}}

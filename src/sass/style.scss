@@ -14,10 +14,8 @@ $inner: calc(64rem + 8vw);
    Basics
    ========================================================================== */
 :root {
-  --font-primary: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol";
-  --font-secondary: "Libre Baskerville", Georgia, serif;
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Libre Baskerville", serif;
 }
 
 html {
@@ -2608,8 +2606,15 @@ textarea {
   }
 }
 
+/*
+==========================================================================
+   Tag Cloud
+========================================================================== 
+*/
+
 .tag-cloud {
   margin: 0 auto;
+  margin-top: 2em;
   text-align: center;
 }
 
@@ -2617,14 +2622,41 @@ textarea {
   display: inline-block;
   margin: 5px;
   padding: 5px 10px;
-  background-color: #f0f0f0;
+  background-color: var(--ghost-accent-color);
   border-radius: 20px;
-  color: #333;
+  color: #f7f8fa;
+  font-weight: 500;
+  font-size: 1.2em;
   text-decoration: none;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: #e0e0e0;
+    background-color: var(--ghost-accent-color);
+    opacity: 0.9;
     transform: scale(1.1);
   }
+}
+
+/*
+==========================================================================
+   Donate
+========================================================================== 
+*/
+
+.post-donate {
+  background: var(--color-background-secondary);
+  border: 1px solid var(--color-background-contrast);
+  padding: 4rem;
+  box-sizing: border-box;
+  font-size: 1.5em;
+  border-radius: 1em;
+}
+
+.post-donate-button {
+  text-decoration: none;
+  color: inherit;
+}
+
+.post-donate-paragraph {
+  line-height: 1.75em;
 }
