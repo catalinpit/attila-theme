@@ -1709,6 +1709,7 @@ textarea {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
 
     @media only screen and (max-width: $breakpoint-medium) {
       flex-direction: column;
@@ -2622,17 +2623,17 @@ textarea {
   display: inline-block;
   margin: 5px;
   padding: 5px 10px;
-  background-color: var(--ghost-accent-color);
   border-radius: 20px;
-  color: #f7f8fa;
+  border: 1px solid var(--color-background-contrast);
   font-weight: 500;
   font-size: 1.2em;
   text-decoration: none;
   transition: all 0.3s ease;
+  color: var(--color-content-secondary);
 
   &:hover {
-    background-color: var(--ghost-accent-color);
-    opacity: 0.9;
+    border: 1px solid var(--ghost-accent-color);
+    color: var(--color-content-main);
     transform: scale(1.1);
   }
 }

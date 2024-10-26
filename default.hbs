@@ -115,23 +115,30 @@
 </html>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  const announcementBar = document.querySelector('#announcement-bar-root');
-  const navHeader = document.querySelector('.nav-header');
+    document.addEventListener('DOMContentLoaded', function() {
+        const announcementBar = document.querySelector('#announcement-bar-root');
+        const navHeader = document.querySelector('.nav-header');
 
-  function adjustNavHeaderPosition() {
-    if (announcementBar) {
-      const announcementBarHeight = announcementBar.offsetHeight;
-      navHeader.style.top = `5rem`;
-    } else {
-      navHeader.style.top = '0';
-    }
-  }
+        function adjustNavHeaderPosition() {
+            if (announcementBar) {
+                const announcementBarHeight = announcementBar.offsetHeight;
+                navHeader.style.top = `${announcementBarHeight}px`;
+            } else {
+                navHeader.style.top = '0';
+            }
+        }
 
-  console.log('announcementBar', announcementBar);
+        adjustNavHeaderPosition();
 
-  adjustNavHeaderPosition();
+        window.addEventListener('resize', adjustNavHeaderPosition);
 
-  window.addEventListener('resize', adjustNavHeaderPosition);
-});
+        setTimeout(() => {
+            const iframe = document.querySelector("#ghost-portal-root iframe");
+            const isHomePage = window.location.pathname === '/' || window.location.pathname === '/index.html';
+            
+            if (iframe && isHomePage) {
+                iframe.style.display = 'none';
+            }
+        }, 500);
+    });
 </script>
