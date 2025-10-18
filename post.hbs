@@ -65,37 +65,21 @@
             ></script></div>
         </section> }}
 
-        {{!-- <section class="post-donate">
-          <h2>Support this blog 🧡</h2>
-          <p class="post-donate-paragraph">If you like this content and it
-            helped you, please consider supporting this blog. This helps me
-            create more free content and keep this blog alive.</p>
-          <div class="post-donate-button">
-            <a
-              href="https://polar.sh/catalins-tech/donate"
-              class="post-donate-link"
-              target="_blank"
-            >
-              Become a supporter
-            </a>
-            <svg
-              class="project-icon"
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6 18L18 6M18 6H10M18 6V14"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </div>
-        </section> --}}
+        {{#if @custom.sponsor_cta_enabled}}
+          <section class="sponsor-cta">
+            <div class="sponsor-cta-header">
+              <img src="{{@custom.sponsor_cta_logo}}" alt="{{@custom.sponsor_cta_name}}" class="sponsor-cta-logo">
+              <div class="sponsor-cta-title">
+                <h2>{{@custom.sponsor_cta_name}}</h2>
+                <span class="sponsor-cta-label">(sponsored)</span>
+              </div>
+            </div>
+            <p class="sponsor-cta-paragraph">{{@custom.sponsor_cta_description}}</p>
+            <div class="sponsor-cta-button">
+              <a href="{{@custom.sponsor_cta_url}}" class="sponsor-cta-link" target="_blank">{{@custom.sponsor_cta_button_text}}</a>
+            </div>
+          </section>
+        {{/if}}
 
         <section class="post-footer">
 
