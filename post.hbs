@@ -65,7 +65,7 @@
             ></script></div>
         </section> }}
 
-        <section class="post-donate">
+        {{!-- <section class="post-donate">
           <h2>Support this blog 🧡</h2>
           <p class="post-donate-paragraph">If you like this content and it
             helped you, please consider supporting this blog. This helps me
@@ -95,54 +95,34 @@
               />
             </svg>
           </div>
-        </section>
+        </section> --}}
 
         <section class="post-footer">
 
-          <div class="post-share">
-            <span class="post-info-label">{{t "Share"}}</span>
-            <a
-              title="Twitter"
-              aria-label="Twitter"
-              class="twitter"
-              href="https://twitter.com/share?text={{title}}&url={{url
-                absolute="true"
-              }}"
-              onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;"
-            >
-              <i class="icon icon-twitter" aria-hidden="true"></i>
-            </a>
-            <a
-              title="Facebook"
-              aria-label="Facebook"
-              class="facebook"
-              href="https://www.facebook.com/sharer/sharer.php?u={{url
-                absolute="true"
-              }}"
-              onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;"
-            >
-              <i class="icon icon-facebook" aria-hidden="true"></i>
-            </a>
-            <a
-              title="LinkedIn"
-              aria-label="LinkedIn"
-              class="linkedin"
-              href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url
-                absolute="true"
-              }}/&amp;title={{title}}"
-              onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;"
-            >
-              <i class="icon icon-linkedin" aria-hidden="true"></i>
-            </a>
-            <a
-              title="Email"
-              aria-label="Email"
-              class="email"
-              href="mailto:?subject={{title}}&amp;body={{url absolute="true"}}"
-            >
-              <i class="icon icon-mail" aria-hidden="true"></i>
-            </a>
-          </div>
+          {{#match @custom.post_share "Native"}}
+					<div class="post-share">
+						<span class="post-info-label">{{t "Share"}}</span>
+						<button aria-label="{{t "Share"}} {{t "Article"}}" class="post-share-button" id="share-button"><i class="icon icon-share" aria-hidden="true">{{> "icons/icon-share"}}</i></button>
+					</div>
+				{{/match}}
+
+				{{#match @custom.post_share "Default"}}
+					<div class="post-share">
+						<span class="post-info-label">{{t "Share"}}</span>
+						<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text={{title}}&url={{url absolute="true"}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+							<i class="icon icon-twitter" aria-hidden="true">{{> "icons/icon-twitter"}}</i>
+						</a>
+						<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+							<i class="icon icon-facebook" aria-hidden="true">{{> "icons/icon-facebook"}}</i>
+						</a>
+						<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{url absolute="true"}}/&amp;title={{title}}" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+							<i class="icon icon-linkedin" aria-hidden="true">{{> "icons/icon-linkedin"}}</i>
+						</a>
+						<a title="Email" aria-label="Email" class="email" href="mailto:?subject={{title}}&amp;body={{url absolute="true"}}">
+							<i class="icon icon-mail" aria-hidden="true">{{> "icons/icon-mail"}}</i>
+						</a>
+					</div>
+				{{/match}}
 
           {{#if tags}}
             <aside class="post-tags">
@@ -181,7 +161,7 @@
                 <i
                   class="icon icon-arrow-left"
                   aria-label="{{t 'Previous post'}}"
-                ></i>
+                >{{> "icons/icon-arrow-left"}}</i>
                 <h2 class="post-nav-title">{{title}}</h2>
                 <p class="post-nav-excerpt">{{excerpt words="12"}}&hellip;</p>
                 <p class="post-nav-meta"><time
@@ -198,7 +178,7 @@
                 <i
                   class="icon icon-arrow-right"
                   aria-label="{{t 'Next post'}}"
-                ></i>
+                >{{> "icons/icon-arrow-right"}}</i>
                 <h2 class="post-nav-title">{{title}}</h2>
                 <p class="post-nav-excerpt">{{excerpt words="12"}}&hellip;</p>
                 <p class="post-nav-meta"><time
@@ -222,76 +202,152 @@
 
 {{/post}}
 
-{{! The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs }}
+{{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
 {{#contentFor "scripts"}}
-  <script>
-    $(document).ready(function () {
-      var viewport = $(window);
-      var post = $('.post-content');
+<script>
+	document.addEventListener("DOMContentLoaded", function () {
+		//responsive videos
+		const sources = [
+			'.post-content iframe[src*="youtube.com"]',
+			'.post-content iframe[src*="youtube-nocookie.com"]',
+			'.post-content iframe[src*="player.vimeo.com"]',
+			'.post-content iframe[src*="kickstarter.com"][src*="video.html"]',
+			'.post-content object',
+			'.post-content embed',
+		];
+		reframe(document.querySelectorAll(sources.join(',')));
+	});
 
-      // Responsive videos with fitVids
-      post.fitVids();
+	{{#if @custom.disqus_shortname}}
+		var disqus = '{{@custom.disqus_shortname}}';
 
-      // Format code blocks and add line numbers
-      function codestyling() {
-        $('pre code').each(function(i, e) {
-          // Code highlight
-          hljs.highlightElement(e);
+		function launchDisqus() {
+			// Dynamically load the Disqus embed script
+			var script = document.createElement('script');
+			script.type = 'text/javascript';
+			script.src = '//' + disqus + '.disqus.com/embed.js';
+			script.async = true;
+			script.setAttribute('data-timestamp', +new Date());
+			script.onload = function() {
+				console.log('Disqus script loaded successfully.');
+			};
 
-          // No lines for plain text blocks
-          if (!$(this).hasClass('language-text')) {
-            var code = $(this);
-            // Calculate amount of lines
-            var lines = code.html().split(/\n(?!$)/g).length;
-            var numbers = [];
-            if (lines > 1) {
-              lines++;
-            }
-            for (i = 1; i < lines; i++) {
-              numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
-            }
-            code.parent().append('<div class="lines">' + numbers + '</div>');
-          }
-        });
-      }
-      codestyling();
+			// Append the script to the document head
+			document.head.appendChild(script);
 
-      // Reading progress bar on window top
-      function readingProgress() {
-        var postBottom = post.offset().top + post.height();
-        var viewportHeight = viewport.height();
-        var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
-        $('.progress-bar').css('width', progress + '%');
-        (progress > 100) ? $('.progress-container').addClass('complete') : $('.progress-container').removeClass('complete');
-      }
-      readingProgress();
+			// Add the 'activated' class to the parent of the triggering element
+			var parent = document.querySelector('.disqus-button'); // Replace with the correct triggering element
+			if (parent) {
+				parent.classList.add('activated');
+			}
+		}
 
-      // Trigger reading progress
-      viewport.on({
-        'scroll': function() {
-          readingProgress();
-        },
-        'resize': function() {
-          readingProgress();
-        },
-        'orientationchange': function() {
-          readingProgress();
-        }
-      });
+		// Execute the function
+		launchDisqus();
 
-      {{#if @custom.disqus_shortname}}
-        var disqus = '{{@custom.disqus_shortname}}';
-        function launchDisqus() {
-          $.ajax({
-            type: "GET",
-            url: "//" + disqus + ".disqus.com/embed.js",
-            dataType: "script",
-            cache: true
-          });
-          $(this).parent().addClass('activated');
-        }
-        launchDisqus();
-      {{/if}}
-    });
-  </script>
+	{{/if}}
+
+	{{#match @custom.post_share "Native"}}
+		document.getElementById('share-button').addEventListener('click', async () => {
+			try {
+				await navigator.share({
+					//title: 'Title',
+					//text: 'Text',
+					url: '{{url absolute="true"}}',
+				});
+				console.log('Data was shared successfully');
+			} catch (err) {
+				console.error('error:', err.message);
+			}
+		});
+	{{/match}}
+
+
+	document.addEventListener("DOMContentLoaded", function () {
+		// Format code blocks and add line numbers
+		function codestyling() {
+			// Select all `pre code` elements
+			document.querySelectorAll('pre code').forEach(function (codeBlock) {
+			// Code highlight
+			hljs.highlightElement(codeBlock);
+
+			// Skip plain text blocks
+			if (!codeBlock.classList.contains('language-text')) {
+				// Calculate the number of lines
+				var lines = codeBlock.innerHTML.split(/\n(?!$)/g).length;
+				if (lines > 1) lines++; // Account for extra line
+
+				// Generate line numbers
+				var numbers = Array.from({ length: lines - 1 }, (_, i) => {
+				return `<span class="line" aria-hidden="true">${i + 1}</span>`;
+				}).join('');
+
+				// Create and append the lines container
+				var linesContainer = document.createElement('div');
+				linesContainer.className = 'lines';
+				linesContainer.innerHTML = numbers;
+				codeBlock.parentNode.appendChild(linesContainer);
+			}
+			});
+		}
+		codestyling();
+	});
+
+	document.addEventListener("DOMContentLoaded", function () {
+		var post = document.querySelector('.post-content');
+		var progressBar = document.querySelector('.progress-bar');
+		var progressContainer = document.querySelector('.progress-container');
+
+		// Helper to calculate the element's position relative to the document
+		function getOffsetTop(element) {
+			var rect = element.getBoundingClientRect();
+			return rect.top + window.scrollY;
+		}
+
+		// Reading progress bar on window top
+		function readingProgress() {
+			if (!post || !progressBar || !progressContainer) return;
+
+			var postBottom = getOffsetTop(post) + post.offsetHeight;
+			var viewportHeight = window.innerHeight;
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+
+			// Calculate progress
+			var progress = 100 - (((postBottom - (scrollTop + viewportHeight) + viewportHeight / 3) / 
+								(postBottom - viewportHeight + viewportHeight / 3)) * 100);
+
+			// Update progress bar width
+			progressBar.style.width = Math.min(progress, 100) + '%';
+
+			// Add or remove the 'complete' class
+			if (progress > 100) {
+				progressContainer.classList.add('complete');
+			} else {
+				progressContainer.classList.remove('complete');
+			}
+		}
+
+		// Initial call
+		readingProgress();
+
+		// Throttle function to optimize scroll and resize events
+		function throttle(callback, delay) {
+			var lastCall = 0;
+			return function () {
+			var now = Date.now();
+			if (now - lastCall >= delay) {
+				lastCall = now;
+				callback();
+			}
+			};
+		}
+
+		// Attach scroll, resize, and orientationchange events
+		var optimizedReadingProgress = throttle(readingProgress, 50);
+		window.addEventListener('scroll', optimizedReadingProgress);
+		window.addEventListener('resize', optimizedReadingProgress);
+		window.addEventListener('orientationchange', optimizedReadingProgress);
+	});
+
+</script>
 {{/contentFor}}
