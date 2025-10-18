@@ -1581,8 +1581,8 @@ textarea {
 .nav-footer {
   position: relative;
   z-index: 20;
-  padding-top: calc(12rem + 8vw);
-  padding-bottom: 12rem;
+  padding-top: calc(5rem + 8vw);
+  padding-bottom: 5rem;
   margin-top: auto;
   font-size: 1.6em;
   line-height: 2rem;
@@ -1959,6 +1959,11 @@ textarea {
   margin: 0 0 4rem;
   font-size: 6em;
   line-height: 1.25em;
+
+  @media (max-width: $breakpoint-medium) {
+    font-size: 4em;
+    margin: 0 0 3rem;
+  }
 }
 
 .has-cover .post-title {
@@ -1986,6 +1991,10 @@ textarea {
       text-decoration: underline;
     }
   }
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    font-size: 1.4em;
+  }
 }
 
 .post-header .post-meta {
@@ -2007,6 +2016,10 @@ textarea {
     width: 8rem;
     height: 1px;
     background: var(--color-background-contrast);
+  }
+
+  @media only screen and (max-width: $breakpoint-medium) {
+    padding-bottom: 3rem;
   }
 
   .post-meta-avatars {
