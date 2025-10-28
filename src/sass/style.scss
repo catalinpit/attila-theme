@@ -2698,6 +2698,12 @@ textarea {
     color: white;
     line-height: 1.2em;
   }
+
+  @media (max-width: $breakpoint-medium) {
+    h2 {
+      font-size: 3em;
+    }
+  }
 }
 
 .theme-light .sponsor-cta {
@@ -2709,6 +2715,11 @@ textarea {
   align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
+
+  @media (max-width: $breakpoint-medium) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .sponsor-cta-title {
@@ -2757,10 +2768,10 @@ textarea {
   text-decoration: none;
   color: var(--ghost-accent-color);
   background: white;
-  padding: 1rem 2.5rem;
+  padding: 2rem 2.5rem;
   border-radius: 8px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.8em;
   transition: all 0.3s ease;
   display: inline-block;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -2774,5 +2785,9 @@ textarea {
   &:active {
     transform: translateY(0);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: $breakpoint-medium) {
+    font-size: 1.6em;
   }
 }
