@@ -9,6 +9,7 @@
     "Page {page} of {pages}": "Halaman {page} dari {pages}",
     "Posts": "Pos-pos",
     "Published with": "Dipublikasikan dengan",
+    "and": "dan",
     "Show Comments": "Tampilkan Komentar",
     "Subscribe": "Berlangganan",
     "Theme": "Tema",
@@ -36,5 +37,7 @@
     "Footer": "Footer",
     "Pagination": "Paginasi",
     "Next post": "Pos Selanjutnya",
-    "Previous post": "Pos Sebelumnya"
+    "Previous post": "Pos Sebelumnya",
+    "Sign in": "Masuk",
+    "Sign up": "Daftar"
 }

@@ -2,7 +2,7 @@
   "name": "attila",
   "description": "Ghost Theme",
   "demo": "https://attila.peteramende.de",
-  "version": "3.6.4",
+  "version": "3.6.5",
   "engines": {
     "ghost": ">=5.0.0"
   },
@@ -38,12 +38,10 @@
     "grunt-contrib-clean": "^2.0.0",
     "grunt-contrib-compress": "^2.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^5.0.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-postcss": "^0.9.0",
     "grunt-sass": "^3.1.0",
-    "load-grunt-tasks": "^5.1.0",
-    "node-sass": "^7.0.3"
+    "grunt-terser": "^2.0.0",
+    "load-grunt-tasks": "^5.1.0"
   },
   "config": {
     "posts_per_page": 15,
@@ -64,7 +62,33 @@
     "card_assets": true,
     "custom": {
       "author_bio_cta": {
-        "type": "text"
+        "type": "text",
+        "group": "post"
+      },
+      "sponsor_cta_enabled": {
+        "type": "boolean",
+        "default": false,
+        "group": "post"
+      },
+      "sponsor_cta_name": {
+        "type": "text",
+        "group": "post"
+      },
+      "sponsor_cta_url": {
+        "type": "text",
+        "group": "post"
+      },
+      "sponsor_cta_logo": {
+        "type": "text",
+        "group": "post"
+      },
+      "sponsor_cta_description": {
+        "type": "text",
+        "group": "post"
+      },
+      "sponsor_cta_button_text": {
+        "type": "text",
+        "group": "post"
       },
       "color_scheme": {
         "type": "select",
@@ -83,10 +107,23 @@
       "darkmode_accent_color": {
         "type": "color",
         "default": "#ff6633"
+      },
+      "post_share": {
+        "type": "select",
+        "options": [
+          "Default",
+          "Native",
+          "Disabled"
+        ],
+        "default": "Default",
+        "group": "post"
       }
     }
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "dependencies": {
+    "sass": "^1.89.2"
+  }
 }

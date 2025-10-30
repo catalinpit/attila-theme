@@ -1,152 +1,154 @@
-jQuery(function ($) {
-  var html = $("html");
-  var viewport = $(window);
+/* Menu */
+document.addEventListener("DOMContentLoaded", function () {
+  var html = document.documentElement;
+  var menu = document.getElementById("menu");
+  var navMenu = document.querySelector(".nav-menu");
+  var navClose = document.querySelector(".nav-close");
 
-  function video() {
-    var post = $(".post-content");
-    post.fitVids();
+  // Function to toggle the menu
+  function toggleMenu() {
+    html.classList.toggle("menu-active");
   }
 
-  video();
+  // Event listeners for menu toggle
+  if (menu) menu.addEventListener("click", toggleMenu);
+  if (navMenu) navMenu.addEventListener("click", toggleMenu);
+  if (navClose) navClose.addEventListener("click", toggleMenu);
 
-  /* ==========================================================================
-   Menu
-   ========================================================================== */
-
-  function menu() {
-    html.toggleClass("menu-active");
-  }
-
-  $("#menu").on({
-    click: function () {
-      menu();
-    },
+  // Remove menu-active class on window resize or orientation change
+  window.addEventListener("resize", function () {
+    html.classList.remove("menu-active");
   });
 
-  $(".nav-menu").on({
-    click: function () {
-      menu();
-    },
+  window.addEventListener("orientationchange", function () {
+    html.classList.remove("menu-active");
   });
+});
 
-  $(".nav-close").on({
-    click: function () {
-      menu();
-    },
-  });
-
-  viewport.on({
-    resize: function () {
-      html.removeClass("menu-active");
-    },
-    orientationchange: function () {
-      html.removeClass("menu-active");
-    },
-  });
-
-  /* ==========================================================================
-   Parallax cover
-   ========================================================================== */
-
-  var cover = $(".cover");
+/* Parallax cover */
+document.addEventListener("DOMContentLoaded", function () {
+  var html = document.documentElement;
+  var cover = document.querySelector(".cover");
   var coverPosition = 0;
+  var ticking = false;
 
+  // Function to handle the parallax effect
   function prlx() {
-    if (cover.length >= 1) {
-      var windowPosition = viewport.scrollTop();
-      windowPosition > 0
-        ? (coverPosition = Math.floor(windowPosition * 0.25))
-        : (coverPosition = 0);
-      cover.css({
-        "-webkit-transform": "translate3d(0, " + coverPosition + "px, 0)",
-        transform: "translate3d(0, " + coverPosition + "px, 0)",
-      });
-      viewport.scrollTop() < cover.height()
-        ? html.addClass("cover-active")
-        : html.removeClass("cover-active");
+    if (cover) {
+      var windowPosition = window.scrollY || document.documentElement.scrollTop;
+      coverPosition = windowPosition > 0 ? Math.floor(windowPosition * 0.25) : 0;
+
+      cover.style.transform = `translate3d(0, ${coverPosition}px, 0)`;
+
+      if (windowPosition < cover.offsetHeight) {
+        html.classList.add("cover-active");
+      } else {
+        html.classList.remove("cover-active");
+      }
     }
   }
-  prlx();
+  function onScrollOrResize() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        prlx();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
 
-  viewport.on({
-    scroll: function () {
-      prlx();
-    },
-    resize: function () {
-      prlx();
-    },
-    orientationchange: function () {
-      prlx();
-    },
+  // Update cached cover height on resize
+  window.addEventListener("resize", () => {
+    coverHeight = cover ? cover.offsetHeight : 0;
   });
 
-  /* ==========================================================================
-   Gallery
-   ========================================================================== */
+  // Attach scroll and resize listeners
+  window.addEventListener("scroll", onScrollOrResize, { passive: true });
+  window.addEventListener("resize", onScrollOrResize);
+  window.addEventListener("orientationchange", onScrollOrResize);
 
-  function gallery() {
-    "use strict";
-    var images = document.querySelectorAll(".kg-gallery-image img");
-    images.forEach(function (image) {
-      var container = image.closest(".kg-gallery-image");
-      var width = image.attributes.width.value;
-      var height = image.attributes.height.value;
+  // Initial call
+  prlx();
+});
+  
+/* Gallery */
+function gallery() {
+  'use strict';
+  var images = document.querySelectorAll('.kg-gallery-image img');
+
+  images.forEach(function(image) {
+    var container = image.closest('.kg-gallery-image');
+    if (container && image.hasAttribute('width') && image.hasAttribute('height')) {
+      var width = parseFloat(image.getAttribute('width'));
+      var height = parseFloat(image.getAttribute('height'));
       var ratio = width / height;
-      container.style.flex = ratio + " 1 0%";
-    });
+      container.style.flex = ratio + ' 1 0%';
+    }
+  });
+}
+  
+// Execute the gallery function
+gallery();
+
+/* Theme */
+document.addEventListener("DOMContentLoaded", function () {
+  'use strict';
+
+  var html = document.documentElement;
+  var toggle = document.querySelector('.js-theme');
+  var toggleText = toggle ? toggle.querySelector('.theme-text') : null;
+
+  function system() {
+    html.classList.remove('theme-dark', 'theme-light');
+    localStorage.removeItem('attila_theme');
+    if (toggleText) {
+      toggleText.textContent = toggle.getAttribute('data-system');
+    }
   }
-  gallery();
 
-  /* ==========================================================================
-   Theme
-   ========================================================================== */
-
-  function theme() {
-    "use strict";
-    var toggle = $(".js-theme");
-    var toggleText = toggle.find(".theme-text");
-
-    function system() {
-      html.removeClass(["theme-dark", "theme-light"]);
-      localStorage.removeItem("attila_theme");
-      toggleText.text(toggle.attr("data-system"));
+  function dark() {
+    html.classList.remove('theme-light');
+    html.classList.add('theme-dark');
+    localStorage.setItem('attila_theme', 'dark');
+    if (toggleText) {
+      toggleText.textContent = toggle.getAttribute('data-dark');
     }
+  }
 
-    function dark() {
-      html.removeClass("theme-light").addClass("theme-dark");
-      localStorage.setItem("attila_theme", "dark");
-      toggleText.text(toggle.attr("data-dark"));
+  function light() {
+    html.classList.remove('theme-dark');
+    html.classList.add('theme-light');
+    localStorage.setItem('attila_theme', 'light');
+    if (toggleText) {
+      toggleText.textContent = toggle.getAttribute('data-light');
     }
+  }
 
-    function light() {
-      html.removeClass("theme-dark").addClass("theme-light");
-      localStorage.setItem("attila_theme", "light");
-      toggleText.text(toggle.attr("data-light"));
-    }
+  // Apply the theme based on saved preference
+  switch (localStorage.getItem('attila_theme')) {
+    case 'dark':
+      dark();
+      break;
+    case 'light':
+      light();
+      break;
+    default:
+      system();
+      break;
+  }
 
-    switch (localStorage.getItem("attila_theme")) {
-      case "dark":
-        dark();
-        break;
-      case "light":
-        light();
-        break;
-      default:
-        system();
-        break;
-    }
-
-    toggle.on("click", function (e) {
+  // Add event listener for toggle click
+  if (toggle) {
+    toggle.addEventListener('click', function (e) {
       e.preventDefault();
 
-      if (!html.hasClass("theme-dark") && !html.hasClass("theme-light")) {
+      if (!html.classList.contains('theme-dark') && !html.classList.contains('theme-light')) {
         dark();
-      } else if (html.hasClass("theme-dark")) {
+      } else if (html.classList.contains('theme-dark')) {
         light();
       } else {
         system();
       }
     });
   }
-  theme();
 });
