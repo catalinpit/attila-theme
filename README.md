@@ -1,3 +1,6 @@
+[![CodeRabbit AI](https://github.com/user-attachments/assets/ff79d23a-200f-4cb3-a8da-eb084f4ba486)](http://catal.ink/coderabbit)
+*Thanks to [CodeRabbit](http://catal.ink/coderabbit) for sponsoring my open source work*
+
 ## Install Ghost
 
 You need to install Ghost locally in order to test your changes. You can install Ghost by following the steps below.
